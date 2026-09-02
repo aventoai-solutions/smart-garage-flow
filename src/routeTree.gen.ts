@@ -10,33 +10,192 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as DemoIndexRouteImport } from './routes/demo.index'
+import { Route as DemoAppointmentsRouteImport } from './routes/demo.appointments'
+import { Route as DemoAutomationRouteImport } from './routes/demo.automation'
+import { Route as DemoCustomersRouteImport } from './routes/demo.customers'
+import { Route as DemoInventoryRouteImport } from './routes/demo.inventory'
+import { Route as DemoInvoicesRouteImport } from './routes/demo.invoices'
+import { Route as DemoJobsRouteImport } from './routes/demo.jobs'
+import { Route as DemoQuotationsRouteImport } from './routes/demo.quotations'
+import { Route as DemoVehiclesRouteImport } from './routes/demo.vehicles'
+import { Route as DemoCustomersIdRouteImport } from './routes/demo.customers.$id'
+import { Route as DemoJobsIdRouteImport } from './routes/demo.jobs.$id'
+import { Route as DemoVehiclesIdRouteImport } from './routes/demo.vehicles.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoIndexRoute = DemoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoAppointmentsRoute = DemoAppointmentsRouteImport.update({
+  id: '/appointments',
+  path: '/appointments',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoAutomationRoute = DemoAutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoCustomersRoute = DemoCustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoInventoryRoute = DemoInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoInvoicesRoute = DemoInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoJobsRoute = DemoJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoQuotationsRoute = DemoQuotationsRouteImport.update({
+  id: '/quotations',
+  path: '/quotations',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoVehiclesRoute = DemoVehiclesRouteImport.update({
+  id: '/vehicles',
+  path: '/vehicles',
+  getParentRoute: () => DemoRoute,
+} as any)
+const DemoCustomersIdRoute = DemoCustomersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => DemoCustomersRoute,
+} as any)
+const DemoJobsIdRoute = DemoJobsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => DemoJobsRoute,
+} as any)
+const DemoVehiclesIdRoute = DemoVehiclesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => DemoVehiclesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRouteWithChildren
+  '/demo/appointments': typeof DemoAppointmentsRoute
+  '/demo/automation': typeof DemoAutomationRoute
+  '/demo/customers': typeof DemoCustomersRouteWithChildren
+  '/demo/inventory': typeof DemoInventoryRoute
+  '/demo/invoices': typeof DemoInvoicesRoute
+  '/demo/jobs': typeof DemoJobsRouteWithChildren
+  '/demo/quotations': typeof DemoQuotationsRoute
+  '/demo/vehicles': typeof DemoVehiclesRouteWithChildren
+  '/demo/': typeof DemoIndexRoute
+  '/demo/customers/$id': typeof DemoCustomersIdRoute
+  '/demo/jobs/$id': typeof DemoJobsIdRoute
+  '/demo/vehicles/$id': typeof DemoVehiclesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo/appointments': typeof DemoAppointmentsRoute
+  '/demo/automation': typeof DemoAutomationRoute
+  '/demo/customers': typeof DemoCustomersRouteWithChildren
+  '/demo/inventory': typeof DemoInventoryRoute
+  '/demo/invoices': typeof DemoInvoicesRoute
+  '/demo/jobs': typeof DemoJobsRouteWithChildren
+  '/demo/quotations': typeof DemoQuotationsRoute
+  '/demo/vehicles': typeof DemoVehiclesRouteWithChildren
+  '/demo': typeof DemoIndexRoute
+  '/demo/customers/$id': typeof DemoCustomersIdRoute
+  '/demo/jobs/$id': typeof DemoJobsIdRoute
+  '/demo/vehicles/$id': typeof DemoVehiclesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/demo': typeof DemoRouteWithChildren
+  '/demo/appointments': typeof DemoAppointmentsRoute
+  '/demo/automation': typeof DemoAutomationRoute
+  '/demo/customers': typeof DemoCustomersRouteWithChildren
+  '/demo/inventory': typeof DemoInventoryRoute
+  '/demo/invoices': typeof DemoInvoicesRoute
+  '/demo/jobs': typeof DemoJobsRouteWithChildren
+  '/demo/quotations': typeof DemoQuotationsRoute
+  '/demo/vehicles': typeof DemoVehiclesRouteWithChildren
+  '/demo/': typeof DemoIndexRoute
+  '/demo/customers/$id': typeof DemoCustomersIdRoute
+  '/demo/jobs/$id': typeof DemoJobsIdRoute
+  '/demo/vehicles/$id': typeof DemoVehiclesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/demo'
+    | '/demo/appointments'
+    | '/demo/automation'
+    | '/demo/customers'
+    | '/demo/inventory'
+    | '/demo/invoices'
+    | '/demo/jobs'
+    | '/demo/quotations'
+    | '/demo/vehicles'
+    | '/demo/'
+    | '/demo/customers/$id'
+    | '/demo/jobs/$id'
+    | '/demo/vehicles/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/demo/appointments'
+    | '/demo/automation'
+    | '/demo/customers'
+    | '/demo/inventory'
+    | '/demo/invoices'
+    | '/demo/jobs'
+    | '/demo/quotations'
+    | '/demo/vehicles'
+    | '/demo'
+    | '/demo/customers/$id'
+    | '/demo/jobs/$id'
+    | '/demo/vehicles/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/demo'
+    | '/demo/appointments'
+    | '/demo/automation'
+    | '/demo/customers'
+    | '/demo/inventory'
+    | '/demo/invoices'
+    | '/demo/jobs'
+    | '/demo/quotations'
+    | '/demo/vehicles'
+    | '/demo/'
+    | '/demo/customers/$id'
+    | '/demo/jobs/$id'
+    | '/demo/vehicles/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DemoRoute: typeof DemoRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +207,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/': {
+      id: '/demo/'
+      path: '/'
+      fullPath: '/demo/'
+      preLoaderRoute: typeof DemoIndexRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/appointments': {
+      id: '/demo/appointments'
+      path: '/appointments'
+      fullPath: '/demo/appointments'
+      preLoaderRoute: typeof DemoAppointmentsRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/automation': {
+      id: '/demo/automation'
+      path: '/automation'
+      fullPath: '/demo/automation'
+      preLoaderRoute: typeof DemoAutomationRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/customers': {
+      id: '/demo/customers'
+      path: '/customers'
+      fullPath: '/demo/customers'
+      preLoaderRoute: typeof DemoCustomersRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/inventory': {
+      id: '/demo/inventory'
+      path: '/inventory'
+      fullPath: '/demo/inventory'
+      preLoaderRoute: typeof DemoInventoryRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/invoices': {
+      id: '/demo/invoices'
+      path: '/invoices'
+      fullPath: '/demo/invoices'
+      preLoaderRoute: typeof DemoInvoicesRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/jobs': {
+      id: '/demo/jobs'
+      path: '/jobs'
+      fullPath: '/demo/jobs'
+      preLoaderRoute: typeof DemoJobsRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/quotations': {
+      id: '/demo/quotations'
+      path: '/quotations'
+      fullPath: '/demo/quotations'
+      preLoaderRoute: typeof DemoQuotationsRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/vehicles': {
+      id: '/demo/vehicles'
+      path: '/vehicles'
+      fullPath: '/demo/vehicles'
+      preLoaderRoute: typeof DemoVehiclesRouteImport
+      parentRoute: typeof DemoRoute
+    }
+    '/demo/customers/$id': {
+      id: '/demo/customers/$id'
+      path: '/$id'
+      fullPath: '/demo/customers/$id'
+      preLoaderRoute: typeof DemoCustomersIdRouteImport
+      parentRoute: typeof DemoCustomersRoute
+    }
+    '/demo/jobs/$id': {
+      id: '/demo/jobs/$id'
+      path: '/$id'
+      fullPath: '/demo/jobs/$id'
+      preLoaderRoute: typeof DemoJobsIdRouteImport
+      parentRoute: typeof DemoJobsRoute
+    }
+    '/demo/vehicles/$id': {
+      id: '/demo/vehicles/$id'
+      path: '/$id'
+      fullPath: '/demo/vehicles/$id'
+      preLoaderRoute: typeof DemoVehiclesIdRouteImport
+      parentRoute: typeof DemoVehiclesRoute
+    }
   }
 }
 
+interface DemoCustomersRouteChildren {
+  DemoCustomersIdRoute: typeof DemoCustomersIdRoute
+}
+
+const DemoCustomersRouteChildren: DemoCustomersRouteChildren = {
+  DemoCustomersIdRoute: DemoCustomersIdRoute,
+}
+
+const DemoCustomersRouteWithChildren = DemoCustomersRoute._addFileChildren(
+  DemoCustomersRouteChildren,
+)
+
+interface DemoJobsRouteChildren {
+  DemoJobsIdRoute: typeof DemoJobsIdRoute
+}
+
+const DemoJobsRouteChildren: DemoJobsRouteChildren = {
+  DemoJobsIdRoute: DemoJobsIdRoute,
+}
+
+const DemoJobsRouteWithChildren = DemoJobsRoute._addFileChildren(
+  DemoJobsRouteChildren,
+)
+
+interface DemoVehiclesRouteChildren {
+  DemoVehiclesIdRoute: typeof DemoVehiclesIdRoute
+}
+
+const DemoVehiclesRouteChildren: DemoVehiclesRouteChildren = {
+  DemoVehiclesIdRoute: DemoVehiclesIdRoute,
+}
+
+const DemoVehiclesRouteWithChildren = DemoVehiclesRoute._addFileChildren(
+  DemoVehiclesRouteChildren,
+)
+
+interface DemoRouteChildren {
+  DemoAppointmentsRoute: typeof DemoAppointmentsRoute
+  DemoAutomationRoute: typeof DemoAutomationRoute
+  DemoCustomersRoute: typeof DemoCustomersRouteWithChildren
+  DemoInventoryRoute: typeof DemoInventoryRoute
+  DemoInvoicesRoute: typeof DemoInvoicesRoute
+  DemoJobsRoute: typeof DemoJobsRouteWithChildren
+  DemoQuotationsRoute: typeof DemoQuotationsRoute
+  DemoVehiclesRoute: typeof DemoVehiclesRouteWithChildren
+  DemoIndexRoute: typeof DemoIndexRoute
+}
+
+const DemoRouteChildren: DemoRouteChildren = {
+  DemoAppointmentsRoute: DemoAppointmentsRoute,
+  DemoAutomationRoute: DemoAutomationRoute,
+  DemoCustomersRoute: DemoCustomersRouteWithChildren,
+  DemoInventoryRoute: DemoInventoryRoute,
+  DemoInvoicesRoute: DemoInvoicesRoute,
+  DemoJobsRoute: DemoJobsRouteWithChildren,
+  DemoQuotationsRoute: DemoQuotationsRoute,
+  DemoVehiclesRoute: DemoVehiclesRouteWithChildren,
+  DemoIndexRoute: DemoIndexRoute,
+}
+
+const DemoRouteWithChildren = DemoRoute._addFileChildren(DemoRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DemoRoute: DemoRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
