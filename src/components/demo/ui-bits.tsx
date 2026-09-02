@@ -4,12 +4,12 @@ import type { AppointmentStatus, InvoiceStatus, JobStatus, QuotationStatus } fro
 
 export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: ReactNode; actions?: ReactNode }) {
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
+    <div className="flex flex-col gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4">
       <div className="min-w-0">
-        <h1 className="font-display truncate text-2xl font-semibold text-foreground">{title}</h1>
+        <h1 className="font-display truncate text-xl font-semibold text-foreground sm:text-2xl">{title}</h1>
         {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
       </div>
-      {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
+      {actions && <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>}
     </div>
   );
 }
@@ -74,12 +74,12 @@ export function StatusPill({
 
 export function StatCard({ label, value, hint, icon }: { label: string; value: string; hint?: string; icon: ReactNode }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-xs">
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{label}</p>
-        <span className="text-steel">{icon}</span>
+    <div className="min-w-0 rounded-xl border border-border bg-card p-3.5 shadow-xs sm:p-4">
+      <div className="flex items-start justify-between gap-2">
+        <p className="min-w-0 text-[11px] leading-tight font-medium tracking-wide text-muted-foreground uppercase sm:text-xs">{label}</p>
+        <span className="shrink-0 text-steel">{icon}</span>
       </div>
-      <p className="font-display mt-2 text-2xl font-semibold text-foreground">{value}</p>
+      <p className="font-display mt-2 truncate text-xl font-semibold text-foreground sm:text-2xl">{value}</p>
       {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
@@ -97,8 +97,8 @@ export function DataTable({
   children: ReactNode;
 }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-xs">
-      <table className="w-full text-sm">
+    <div className="w-full overflow-x-auto rounded-xl border border-border bg-card shadow-xs">
+      <table className="w-full min-w-max text-sm sm:min-w-0">
         <thead>
           <tr className="border-b border-border bg-secondary/60">
             {head.map((h) => (
