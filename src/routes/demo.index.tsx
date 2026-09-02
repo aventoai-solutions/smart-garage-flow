@@ -28,9 +28,9 @@ function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Dashboard" subtitle="Wednesday, 2 September 2026 · ABC Garage, Al Quoz, Dubai" />
+      <PageHeader title="Dashboard" subtitle="Wed, 2 Sep 2026 · ABC Garage, Al Quoz, Dubai" />
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-6">
         <StatCard label="Vehicles in workshop" value={String(inWorkshop.length)} icon={<Car className="h-4 w-4" />} />
         <StatCard label="Waiting approval" value={String(waitingApproval.length)} hint="Quotations sent" icon={<FileCheck className="h-4 w-4" />} />
         <StatCard label="In progress" value={String(inProgress.length)} icon={<Wrench className="h-4 w-4" />} />
